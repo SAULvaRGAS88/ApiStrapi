@@ -379,6 +379,11 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
     fotoAvatar: Attribute.Media<'images'>;
     senha: Attribute.String & Attribute.Required;
     email: Attribute.String & Attribute.Required;
+    cursos: Attribute.Relation<
+      'api::aluno.aluno',
+      'manyToMany',
+      'api::curso.curso'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -390,6 +395,43 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::aluno.aluno',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCursoCurso extends Schema.CollectionType {
+  collectionName: 'cursos';
+  info: {
+    singularName: 'curso';
+    pluralName: 'cursos';
+    displayName: 'Curso';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nome: Attribute.String & Attribute.Required;
+    diaAula: Attribute.String & Attribute.Required;
+    horaAula: Attribute.String & Attribute.Required;
+    alunos: Attribute.Relation<
+      'api::curso.curso',
+      'manyToMany',
+      'api::aluno.aluno'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::curso.curso',
       'oneToOne',
       'admin::user'
     > &
@@ -834,6 +876,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::aluno.aluno': ApiAlunoAluno;
+      'api::curso.curso': ApiCursoCurso;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

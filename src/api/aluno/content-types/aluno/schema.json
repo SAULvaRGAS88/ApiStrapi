@@ -35,6 +35,12 @@
     "email": {
       "type": "string",
       "required": true
+    },
+    "cursos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::curso.curso",
+      "mappedBy": "alunos"
     }
   }
 }
