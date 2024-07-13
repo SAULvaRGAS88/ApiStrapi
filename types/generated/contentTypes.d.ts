@@ -368,12 +368,13 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
     singularName: 'aluno';
     pluralName: 'alunos';
     displayName: 'Aluno';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    nome: Attribute.String & Attribute.Required;
+    nome: Attribute.String & Attribute.Required & Attribute.Unique;
     idade: Attribute.String & Attribute.Required;
     senha: Attribute.String & Attribute.Required;
     email: Attribute.String & Attribute.Required;
