@@ -368,15 +368,13 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
     singularName: 'aluno';
     pluralName: 'alunos';
     displayName: 'Aluno';
-    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     nome: Attribute.String & Attribute.Required;
-    idade: Attribute.Integer & Attribute.Required;
-    fotoAvatar: Attribute.Media<'images'>;
+    idade: Attribute.String & Attribute.Required;
     senha: Attribute.String & Attribute.Required;
     email: Attribute.String & Attribute.Required;
     cursos: Attribute.Relation<
@@ -384,9 +382,9 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
       'manyToMany',
       'api::curso.curso'
     >;
+    fotoAvatar: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::aluno.aluno',
       'oneToOne',

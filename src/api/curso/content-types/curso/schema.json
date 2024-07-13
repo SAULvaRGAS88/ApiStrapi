@@ -27,7 +27,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::aluno.aluno",
-      "inversedBy": "cursos"
+      "mappedBy": "cursos"
     }
   }
 }

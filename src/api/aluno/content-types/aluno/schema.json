@@ -4,11 +4,10 @@
   "info": {
     "singularName": "aluno",
     "pluralName": "alunos",
-    "displayName": "Aluno",
-    "description": ""
+    "displayName": "Aluno"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -17,16 +16,8 @@
       "required": true
     },
     "idade": {
-      "type": "integer",
+      "type": "string",
       "required": true
-    },
-    "fotoAvatar": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
     },
     "senha": {
       "type": "string",
@@ -40,7 +31,15 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::curso.curso",
-      "mappedBy": "alunos"
+      "inversedBy": "alunos"
+    },
+    "fotoAvatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
