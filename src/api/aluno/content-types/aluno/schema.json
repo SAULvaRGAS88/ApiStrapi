@@ -42,6 +42,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "tokenFront": {
+      "type": "uid",
+      "private": true,
+      "maxLength": 10,
+      "required": true,
+      "minLength": 10,
+      "targetField": "senha"
     }
   }
 }

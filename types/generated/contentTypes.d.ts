@@ -384,6 +384,13 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
       'api::curso.curso'
     >;
     fotoAvatar: Attribute.Media<'images'> & Attribute.Required;
+    tokenFront: Attribute.UID<'api::aluno.aluno', 'senha'> &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 10;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
