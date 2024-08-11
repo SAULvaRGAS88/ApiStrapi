@@ -4,7 +4,8 @@
   "info": {
     "singularName": "curso",
     "pluralName": "cursos",
-    "displayName": "Curso"
+    "displayName": "Curso",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,6 +29,18 @@
       "relation": "manyToMany",
       "target": "api::aluno.aluno",
       "mappedBy": "cursos"
+    },
+    "fotoCurso": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "modulo1": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

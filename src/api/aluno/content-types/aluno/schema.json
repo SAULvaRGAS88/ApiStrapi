@@ -17,10 +17,6 @@
       "required": true,
       "unique": true
     },
-    "idade": {
-      "type": "string",
-      "required": true
-    },
     "senha": {
       "type": "string",
       "required": true
@@ -34,22 +30,6 @@
       "relation": "manyToMany",
       "target": "api::curso.curso",
       "inversedBy": "alunos"
-    },
-    "fotoAvatar": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "tokenFront": {
-      "type": "uid",
-      "private": true,
-      "maxLength": 10,
-      "required": true,
-      "minLength": 10,
-      "targetField": "senha"
     }
   }
 }
