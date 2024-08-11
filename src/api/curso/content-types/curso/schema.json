@@ -30,17 +30,19 @@
       "target": "api::aluno.aluno",
       "mappedBy": "cursos"
     },
-    "fotoCurso": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "modulo1": {
       "type": "boolean",
       "default": false
+    },
+    "capa": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

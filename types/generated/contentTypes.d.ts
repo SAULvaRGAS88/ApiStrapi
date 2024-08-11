@@ -382,6 +382,7 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
       'manyToMany',
       'api::curso.curso'
     >;
+    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -419,8 +420,8 @@ export interface ApiCursoCurso extends Schema.CollectionType {
       'manyToMany',
       'api::aluno.aluno'
     >;
-    fotoCurso: Attribute.Media<'images', true> & Attribute.Required;
     modulo1: Attribute.Boolean & Attribute.DefaultTo<false>;
+    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

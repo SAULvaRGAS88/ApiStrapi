@@ -30,6 +30,16 @@
       "relation": "manyToMany",
       "target": "api::curso.curso",
       "inversedBy": "alunos"
+    },
+    "capa": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
