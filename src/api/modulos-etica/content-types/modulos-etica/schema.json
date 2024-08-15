@@ -38,11 +38,11 @@
     "linkLive": {
       "type": "string"
     },
-    "cursos": {
+    "curso": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::curso.curso",
-      "mappedBy": "modulos_etica"
+      "inversedBy": "modulos_eticas"
     }
   }
 }

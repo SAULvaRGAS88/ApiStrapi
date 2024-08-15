@@ -44,11 +44,11 @@
       "type": "media",
       "multiple": false
     },
-    "modulos_etica": {
+    "modulos_eticas": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::modulos-etica.modulos-etica",
-      "inversedBy": "cursos"
+      "mappedBy": "curso"
     }
   }
 }
