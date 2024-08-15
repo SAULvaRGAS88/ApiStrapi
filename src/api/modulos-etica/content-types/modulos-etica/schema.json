@@ -4,7 +4,8 @@
   "info": {
     "singularName": "modulos-etica",
     "pluralName": "modulos-eticas",
-    "displayName": "ModulosEtica"
+    "displayName": "ModulosEtica",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,21 +27,22 @@
       "type": "string"
     },
     "slides": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "linkLive": {
       "type": "string"
     },
-    "curso": {
+    "cursos": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::curso.curso",
-      "inversedBy": "modulos_etica"
+      "mappedBy": "modulos_etica"
     }
   }
 }

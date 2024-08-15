@@ -850,7 +850,7 @@ export interface ApiCursoCurso extends Schema.CollectionType {
     capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     modulos_etica: Attribute.Relation<
       'api::curso.curso',
-      'oneToOne',
+      'manyToOne',
       'api::modulos-etica.modulos-etica'
     >;
     createdAt: Attribute.DateTime;
@@ -877,6 +877,7 @@ export interface ApiModulosEticaModulosEtica extends Schema.CollectionType {
     singularName: 'modulos-etica';
     pluralName: 'modulos-eticas';
     displayName: 'ModulosEtica';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -888,9 +889,9 @@ export interface ApiModulosEticaModulosEtica extends Schema.CollectionType {
     linkForms: Attribute.String;
     slides: Attribute.Media<'images' | 'files', true>;
     linkLive: Attribute.String;
-    curso: Attribute.Relation<
+    cursos: Attribute.Relation<
       'api::modulos-etica.modulos-etica',
-      'oneToOne',
+      'oneToMany',
       'api::curso.curso'
     >;
     createdAt: Attribute.DateTime;

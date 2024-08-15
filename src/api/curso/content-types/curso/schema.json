@@ -46,9 +46,9 @@
     },
     "modulos_etica": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::modulos-etica.modulos-etica",
-      "mappedBy": "curso"
+      "inversedBy": "cursos"
     }
   }
 }
