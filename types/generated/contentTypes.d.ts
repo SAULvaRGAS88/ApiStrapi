@@ -362,84 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAlunoAluno extends Schema.CollectionType {
-  collectionName: 'alunos';
-  info: {
-    singularName: 'aluno';
-    pluralName: 'alunos';
-    displayName: 'Aluno';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    nome: Attribute.String & Attribute.Required & Attribute.Unique;
-    senha: Attribute.String & Attribute.Required;
-    email: Attribute.String & Attribute.Required;
-    cursos: Attribute.Relation<
-      'api::aluno.aluno',
-      'manyToMany',
-      'api::curso.curso'
-    >;
-    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::aluno.aluno',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::aluno.aluno',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCursoCurso extends Schema.CollectionType {
-  collectionName: 'cursos';
-  info: {
-    singularName: 'curso';
-    pluralName: 'cursos';
-    displayName: 'Curso';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nome: Attribute.String & Attribute.Required;
-    diaAula: Attribute.String & Attribute.Required;
-    horaAula: Attribute.String & Attribute.Required;
-    alunos: Attribute.Relation<
-      'api::curso.curso',
-      'manyToMany',
-      'api::aluno.aluno'
-    >;
-    modulo1: Attribute.Boolean & Attribute.DefaultTo<false>;
-    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::curso.curso',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::curso.curso',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -866,6 +788,129 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAlunoAluno extends Schema.CollectionType {
+  collectionName: 'alunos';
+  info: {
+    singularName: 'aluno';
+    pluralName: 'alunos';
+    displayName: 'Aluno';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    nome: Attribute.String & Attribute.Required & Attribute.Unique;
+    senha: Attribute.String & Attribute.Required;
+    email: Attribute.String & Attribute.Required;
+    cursos: Attribute.Relation<
+      'api::aluno.aluno',
+      'manyToMany',
+      'api::curso.curso'
+    >;
+    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aluno.aluno',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aluno.aluno',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCursoCurso extends Schema.CollectionType {
+  collectionName: 'cursos';
+  info: {
+    singularName: 'curso';
+    pluralName: 'cursos';
+    displayName: 'Curso';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nome: Attribute.String & Attribute.Required;
+    diaAula: Attribute.String & Attribute.Required;
+    horaAula: Attribute.String & Attribute.Required;
+    alunos: Attribute.Relation<
+      'api::curso.curso',
+      'manyToMany',
+      'api::aluno.aluno'
+    >;
+    modulo1: Attribute.Boolean & Attribute.DefaultTo<false>;
+    capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    modulos_etica: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'api::modulos-etica.modulos-etica'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiModulosEticaModulosEtica extends Schema.CollectionType {
+  collectionName: 'modulos_eticas';
+  info: {
+    singularName: 'modulos-etica';
+    pluralName: 'modulos-eticas';
+    displayName: 'ModulosEtica';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nome: Attribute.String & Attribute.Required;
+    linkYouTube: Attribute.String;
+    moduloRealizado: Attribute.Boolean & Attribute.DefaultTo<false>;
+    linkForms: Attribute.String;
+    slides: Attribute.Media<'images' | 'files', true>;
+    linkLive: Attribute.String;
+    curso: Attribute.Relation<
+      'api::modulos-etica.modulos-etica',
+      'oneToOne',
+      'api::curso.curso'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::modulos-etica.modulos-etica',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::modulos-etica.modulos-etica',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -876,8 +921,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::aluno.aluno': ApiAlunoAluno;
-      'api::curso.curso': ApiCursoCurso;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -886,6 +929,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::aluno.aluno': ApiAlunoAluno;
+      'api::curso.curso': ApiCursoCurso;
+      'api::modulos-etica.modulos-etica': ApiModulosEticaModulosEtica;
     }
   }
 }

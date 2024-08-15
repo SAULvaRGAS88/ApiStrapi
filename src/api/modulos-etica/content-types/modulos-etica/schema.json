@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "modulos_eticas",
+  "info": {
+    "singularName": "modulos-etica",
+    "pluralName": "modulos-eticas",
+    "displayName": "ModulosEtica"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "linkYouTube": {
+      "type": "string"
+    },
+    "moduloRealizado": {
+      "type": "boolean",
+      "default": false
+    },
+    "linkForms": {
+      "type": "string"
+    },
+    "slides": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "linkLive": {
+      "type": "string"
+    },
+    "curso": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::curso.curso",
+      "inversedBy": "modulos_etica"
+    }
+  }
+}
