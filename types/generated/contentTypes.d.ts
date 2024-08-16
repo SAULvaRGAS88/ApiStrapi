@@ -809,6 +809,7 @@ export interface ApiAlunoAluno extends Schema.CollectionType {
       'api::curso.curso'
     >;
     capa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sexo: Attribute.Enumeration<['Masculino', 'Feminino']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
